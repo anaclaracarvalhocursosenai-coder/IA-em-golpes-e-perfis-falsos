@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0d10">
+<meta name="description" content="Apresentação escolar: inteligência artificial em golpes e perfis falsos.">
+<title>Digital Threat Lab | Apresentação</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0d10;--panel:#14181f;--panel2:#1a2028;--text:#f5f6f8;--muted:#b1b7c1;--red:#e63946;--red2:#ff626b;--line:#303640;--green:#80dfb2;--yellow:#f5ca76}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.55}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(#ffffff06 1px,transparent 1px),linear-gradient(90deg,#ffffff06 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(to bottom,#000,transparent 90%);z-index:-1}
+header{position:sticky;top:0;z-index:10;background:#0b0d10eF;backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.top{max-width:1100px;margin:auto;padding:13px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:.06em;font-size:.88rem}.mark{width:34px;height:34px;display:grid;place-items:center;background:var(--red);border-radius:10px;font-size:18px}
+.brand small{display:block;color:var(--muted);font-size:.62rem;font-weight:500;letter-spacing:.13em}
+.progress{height:3px;background:#242a32}.progress span{display:block;height:100%;width:0;background:var(--red);transition:width .3s}
+main{max-width:1100px;margin:auto;padding:34px 22px 110px}
+.slide{display:none;min-height:calc(100vh - 150px);animation:enter .35s ease both}.slide.active{display:flex;flex-direction:column;justify-content:center}
+@keyframes enter{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+.kicker{font:500 .72rem 'DM Mono',monospace;color:var(--red2);letter-spacing:.14em;text-transform:uppercase;margin-bottom:15px}
+h1,h2,h3{font-family:'Space Grotesk',Inter,sans-serif;line-height:1.08;margin:0 0 18px;letter-spacing:-.035em}
+h1{font-size:clamp(2.7rem,7vw,5.7rem);max-width:900px}h2{font-size:clamp(2rem,5vw,3.5rem);max-width:850px}h3{font-size:1.15rem;letter-spacing:-.015em}
+p{margin:0 0 13px;color:var(--muted);font-size:clamp(.98rem,1.5vw,1.12rem);max-width:800px}.lead{font-size:clamp(1.12rem,2vw,1.35rem);color:#e6e8ec;max-width:800px}
+.accent{color:var(--red2)}.tag{display:inline-flex;border:1px solid #e6394666;background:#e6394618;color:#ff9299;padding:6px 10px;border-radius:7px;font:500 .7rem 'DM Mono',monospace;letter-spacing:.06em}
+.hero-grid{display:grid;grid-template-columns:1.4fr .6fr;align-items:center;gap:34px}.hero-art{border:1px solid #e6394655;background:radial-gradient(circle at 50% 42%,#e6394633,transparent 55%),var(--panel);border-radius:28px;min-height:290px;display:grid;place-items:center;position:relative;overflow:hidden}
+.orbit{width:190px;height:190px;border:1px solid #e6394699;border-radius:50%;display:grid;place-items:center;position:relative}.orbit:before,.orbit:after{content:"";position:absolute;border:1px solid #e6394666;border-radius:50%;inset:20px}.orbit:after{inset:-22px;border-style:dashed;animation:spin 24s linear infinite}.core{width:90px;height:90px;border-radius:24px;background:var(--red);display:grid;place-items:center;font-size:42px;box-shadow:0 0 70px #e6394666}
+@keyframes spin{to{transform:rotate(360deg)}}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}.grid.two{grid-template-columns:repeat(2,1fr)}.card{padding:20px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(145deg,#171b22f2,#101318f2)}.card .num{font:500 .75rem 'DM Mono',monospace;color:var(--red2);margin-bottom:12px}.card p{font-size:.94rem;margin:8px 0 0}.card strong{color:var(--text)}
+.callout{margin-top:20px;padding:18px 20px;border-left:3px solid var(--red);background:#e6394612;border-radius:0 12px 12px 0;max-width:850px}.callout p{margin:0;font-size:1rem;color:#e5e7eb}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:22px 0}.stat{padding:20px 16px;border-radius:15px;background:var(--panel);border:1px solid var(--line)}.stat b{display:block;font:700 clamp(1.8rem,4vw,2.8rem) 'Space Grotesk',sans-serif;color:var(--red2);line-height:1.1;margin-bottom:9px}.stat span{display:block;color:var(--muted);font-size:.83rem}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:24px}.step{padding:18px 14px;border:1px solid var(--line);background:var(--panel);border-radius:13px;position:relative}.step b{display:block;color:var(--red2);margin-bottom:8px}.step span{color:var(--muted);font-size:.9rem}.step:not(:last-child):after{content:"→";position:absolute;right:-10px;top:42%;color:var(--red2);z-index:1;font-weight:800}
+footer{position:fixed;bottom:0;left:0;right:0;background:#0b0d10ed;backdrop-filter:blur(14px);border-top:1px solid var(--line);z-index:10}.controls{max-width:1100px;margin:auto;padding:13px 22px;display:flex;align-items:center;justify-content:space-between;gap:12px}.counter{font:500 .75rem 'DM Mono',monospace;color:var(--muted)}.buttons{display:flex;gap:8px}.btn{border:1px solid var(--line);background:var(--panel);color:var(--text);padding:10px 15px;border-radius:10px;font:600 .88rem Inter;cursor:pointer;transition:.2s}.btn:hover{border-color:var(--red);transform:translateY(-1px)}.btn.primary{background:var(--red);border-color:var(--red);color:white}.btn:disabled{opacity:.35;cursor:not-allowed;transform:none}.dots{display:flex;gap:6px}.dot{width:7px;height:7px;border:0;border-radius:99px;background:#454b55;padding:0;cursor:pointer}.dot.active{width:22px;background:var(--red)}
+.source{display:inline-block;color:#ff8b93;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}.small{font-size:.82rem;color:var(--muted)}.endline{font:500 .75rem 'DM Mono',monospace;color:var(--muted);margin-top:28px}
+@media(max-width:760px){main{padding:24px 17px 100px}.top{padding:11px 17px}.hero-grid{grid-template-columns:1fr}.hero-art{min-height:180px}.orbit{transform:scale(.7)}.grid,.grid.two{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.flow{grid-template-columns:1fr 1fr}.step:not(:last-child):after{display:none}.controls{padding:10px 14px}.btn{padding:10px 12px}.dots{display:none}.brand{font-size:.78rem}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media print{header,footer{display:none!important}main{padding:0;max-width:none}.slide{display:flex!important;min-height:0;page-break-after:always;padding:25px 0}.hero-art{display:none}body{background:#fff;color:#111}.card,.stat,.step{background:#fff;border-color:#ccc}.card p,.stat span,.step span,p{color:#333}.accent,.kicker,.num,.stat b,.step b{color:#a10f20}}
+</style>
+</head>
+<body>
+<header><div class="top"><div class="brand"><div class="mark">⌁</div><div>DIGITAL THREAT LAB<small>IA • GOLPES • SEGURANÇA DIGITAL</small></div></div><span class="tag">APRESENTAÇÃO EM GRUPO</span></div><div class="progress"><span id="progress"></span></div></header>
+<main>
+<section class="slide active" data-title="Abertura">
+ <div class="hero-grid"><div><div class="kicker">01 / O tema</div><span class="tag">DESENVOLVIMENTO DE SISTEMAS</span><h1 style="margin-top:20px">Quando a IA aprende a imitar, <span class="accent">em quem confiar?</span></h1><p class="lead">Como a inteligência artificial pode ampliar golpes, criar identidades falsas e desafiar a segurança digital.</p><p>Esta apresentação explica o problema, analisa um caso relatado pela Anthropic em 2026 e mostra o que podemos fazer para reduzir os riscos.</p><div class="endline">IDEIA CENTRAL · TECNOLOGIA + MANIPULAÇÃO + ESCALA</div></div><div class="hero-art"><div class="orbit"><div class="core">⌁</div></div></div></div>
+</section>
+<section class="slide" data-title="O que é">
+ <div class="kicker">02 / Conceitos essenciais</div><h2>O que são golpes e <span class="accent">perfis falsos?</span></h2><p class="lead">Golpes digitais tentam enganar alguém para conseguir dinheiro, dados, senhas ou acesso.</p>
+ <div class="grid"><article class="card"><div class="num">CONCEITO 01</div><h3>Perfil falso</h3><p>Uma conta que usa identidade inventada, informações roubadas ou uma representação enganosa de quem está por trás dela.</p></article><article class="card"><div class="num">CONCEITO 02</div><h3>Engenharia social</h3><p>Manipulação da confiança, do medo, da curiosidade ou da urgência para influenciar decisões.</p></article><article class="card"><div class="num">CONCEITO 03</div><h3>Phishing e deepfake</h3><p>Phishing tenta obter informações por mensagens enganosas. Deepfakes imitam rostos, vozes ou vídeos com recursos de IA.</p></article></div>
+ <div class="callout"><p><strong>Importante:</strong> nem todo perfil anônimo é criminoso e nem todo conteúdo criado por IA é um golpe. O contexto e os sinais precisam ser avaliados em conjunto.</p></div>
+</section>
+<section class="slide" data-title="Como a IA ajuda">
+ <div class="kicker">03 / Como funciona</div><h2>O que a IA pode <span class="accent">facilitar?</span></h2><p class="lead">A principal mudança é a possibilidade de produzir conteúdo e manter muitas interações com mais velocidade.</p>
+ <div class="grid two"><article class="card"><div class="num">01 — TEXTO</div><h3>Mensagens personalizadas</h3><p>A IA pode escrever e adaptar mensagens para diferentes idiomas, estilos e contextos.</p></article><article class="card"><div class="num">02 — IMAGEM</div><h3>Identidades artificiais</h3><p>Imagens e detalhes fictícios podem dar aparência de legitimidade a uma conta inventada.</p></article><article class="card"><div class="num">03 — AUTOMAÇÃO</div><h3>Mais interações</h3><p>Sistemas automatizados podem responder, organizar conversas e repetir tarefas em grande escala.</p></article><article class="card"><div class="num">04 — LIMITE</div><h3>A IA não age isoladamente</h3><p>Pessoas escolhem como usar as ferramentas, definem objetivos e podem intervir nas operações. A IA também erra e inventa informações.</p></article></div>
+ <div class="flow"><div class="step"><b>1. Identidade</b><span>Conta ou persona fictícia</span></div><div class="step"><b>2. Interação</b><span>Mensagens e respostas</span></div><div class="step"><b>3. Influência</b><span>Tentativa de ganhar confiança</span></div><div class="step"><b>4. Risco</b><span>Dados, dinheiro ou manipulação</span></div></div>
+</section>
+<section class="slide" data-title="Relatório Anthropic">
+ <div class="kicker">04 / Caso documentado</div><h2>O que diz o relatório da <span class="accent">Anthropic?</span></h2><p class="lead">O relatório “Countering misuse of AI: September 2026” descreve usos maliciosos de IA, incluindo um caso relacionado a uma rede enganosa de aplicativos de namoro.</p>
+ <div class="stats"><div class="stat"><b>20+</b><span>aplicativos de namoro na rede investigada</span></div><div class="stat"><b>4.700+</b><span>personas de IA identificadas</span></div><div class="stat"><b>25 mil+</b><span>pessoas únicas que interagiram com essas personas</span></div><div class="stat"><b>2,36 mi</b><span>mensagens processadas pelo Claude em duas semanas</span></div></div>
+ <div class="callout"><p>Os números mostram a escala descrita pela investigação. <strong>Não significam que todas as pessoas tiveram prejuízo financeiro comprovado.</strong></p></div>
+ <p style="margin-top:20px">Fonte primária: <a class="source" href="https://www.anthropic.com/threat-intelligence-report-september-2026?page=1" target="_blank" rel="noopener">Anthropic — relatório de setembro de 2026 ↗</a></p>
+</section>
+<section class="slide" data-title="O que aprendemos">
+ <div class="kicker">05 / Análise do caso</div><h2>O que esse caso <span class="accent">demonstra?</span></h2>
+ <div class="grid two"><article class="card"><div class="num">ESCALA</div><h3>Muitas personas</h3><p>A operação envolvia milhares de personas artificiais e uma rede de aplicativos, ampliando a quantidade de interações possíveis.</p></article><article class="card"><div class="num">OPERAÇÃO HÍBRIDA</div><h3>IA e pessoas</h3><p>O caso não deve ser entendido como “a IA fez tudo sozinha”: a investigação descreve uma operação com tecnologia e participação humana.</p></article><article class="card"><div class="num">TRANSPARÊNCIA</div><h3>Quem está do outro lado?</h3><p>Quando um serviço promete interações humanas, mas utiliza personas artificiais sem transparência, a confiança do usuário fica comprometida.</p></article><article class="card"><div class="num">LIMITES</div><h3>Não exagerar conclusões</h3><p>Os dados indicam escala de atividade. Não devemos inventar valores roubados, prejuízos ou número de vítimas financeiras sem comprovação.</p></article></div>
+ <div class="callout"><p><strong>Conclusão do caso:</strong> a IA pode tornar certas operações mais rápidas e escaláveis, mas o uso, as decisões e a responsabilidade envolvem pessoas e organizações.</p></div>
+</section>
+<section class="slide" data-title="Riscos e defesa">
+ <div class="kicker">06 / Impactos e prevenção</div><h2>Quais são os riscos — e <span class="accent">como reduzir?</span></h2>
+ <div class="grid two"><article class="card"><h3>💰 Prejuízo financeiro</h3><p>Uma identidade enganosa pode ser usada para pedir dinheiro ou induzir pagamentos.</p></article><article class="card"><h3>🔐 Roubo de informações</h3><p>Conversas falsas podem tentar obter senhas, códigos, documentos ou dados confidenciais.</p></article><article class="card"><h3>🎭 Manipulação</h3><p>Mensagens persistentes e personalizadas podem explorar emoções e confiança.</p></article><article class="card"><h3>🌐 Escala maior</h3><p>A automação pode aumentar o número de pessoas atingidas por uma operação.</p></article></div>
+ <div class="callout"><p><strong>Proteção rápida:</strong> confirme identidades por outro canal, não compartilhe códigos ou senhas, desconfie de urgência incomum, ative autenticação multifator e denuncie contas suspeitas.</p></div>
+</section>
+<section class="slide" data-title="Militar e governo">
+ <div class="kicker">07 / Aplicação estratégica</div><h2>Por que isso importa para o mundo <span class="accent">militar e governamental?</span></h2><p class="lead">A mesma lógica de manipulação pode ameaçar organizações que lidam com informações sensíveis.</p>
+ <div class="grid two"><article class="card"><div class="num">AMEAÇA</div><h3>Personificação e phishing</h3><p>Uma mensagem pode fingir vir de um colega ou autoridade para tentar obter informações ou credenciais.</p></article><article class="card"><div class="num">DEFESA</div><h3>Verificação independente</h3><p>Pedidos sensíveis devem ser confirmados por canais oficiais; nunca basta confiar apenas no nome, na foto ou no tom da mensagem.</p></article></div>
+ <div class="callout"><p>Essa é uma aplicação possível dos riscos de engenharia social. Não significa que o caso de aplicativos de namoro descrito no relatório tenha sido uma operação militar.</p></div>
+</section>
+<section class="slide" data-title="Desenvolvimento de Sistemas">
+ <div class="kicker">08 / Ligação com o curso</div><h2>O papel de quem desenvolve <span class="accent">sistemas</span></h2><p class="lead">Um sistema não deve apenas funcionar: precisa proteger as pessoas que o utilizam.</p>
+ <div class="grid"><article class="card"><div class="num">01</div><h3>Autenticação e acesso</h3><p>Proteger contas, aplicar permissões adequadas e reduzir acessos indevidos.</p></article><article class="card"><div class="num">02</div><h3>Dados e privacidade</h3><p>Coletar somente o necessário, proteger informações e evitar exposição em logs.</p></article><article class="card"><div class="num">03</div><h3>Monitoramento</h3><p>Identificar padrões anormais, investigar alertas e responder a incidentes.</p></article></div>
+ <div class="callout"><p>Detectores automáticos podem errar. Por isso, sistemas de segurança precisam ser testados e avaliados para reduzir falsos positivos e falsos negativos, com supervisão adequada.</p></div>
+</section>
+<section class="slide" data-title="Conclusão">
+ <div class="kicker">09 / Encerramento</div><h2>Tecnologia sem responsabilidade também pode virar <span class="accent">ameaça.</span></h2><p class="lead">A inteligência artificial pode trazer benefícios, mas também pode ampliar fraudes quando usada de forma maliciosa.</p>
+ <div class="grid two"><article class="card"><h3>O que aprendemos?</h3><p>IA pode acelerar mensagens, criar personas e ampliar interações. Isso não elimina a participação humana nem prova, por si só, que uma fraude ocorreu.</p></article><article class="card"><h3>O que levamos para o curso?</h3><p>Segurança, privacidade, transparência e ética devem fazer parte do desenvolvimento desde o início — não ser acrescentadas somente depois de um problema.</p></article></div>
+ <div class="callout"><p><strong>Mensagem final:</strong> antes de confiar, verifique. Antes de desenvolver, pense nos riscos. E, ao usar IA, considere as consequências para as pessoas.</p></div>
+ <p style="margin-top:22px">Referência principal: <a class="source" href="https://www.anthropic.com/threat-intelligence-report-september-2026?page=1" target="_blank" rel="noopener">Anthropic — Countering misuse of AI: September 2026 ↗</a></p>
+ <p class="small">Fontes complementares para pesquisa: CERT.br, SaferNet Brasil, ANPD e CISA. Consulte as páginas oficiais antes de inserir referências bibliográficas completas no trabalho.</p>
+ <div class="endline">DIGITAL THREAT LAB · DESENVOLVIMENTO DE SISTEMAS</div>
+</section>
+</main>
+<footer><div class="controls"><div class="counter" id="counter">SLIDE 01 / 09</div><div class="dots" id="dots" aria-label="Ir para slide"></div><div class="buttons"><button class="btn" id="prev" disabled>← Anterior</button><button class="btn primary" id="next">Próximo →</button></div></div></footer>
+<script>
+const slides=[...document.querySelectorAll('.slide')],progress=document.getElementById('progress'),counter=document.getElementById('counter'),prev=document.getElementById('prev'),next=document.getElementById('next'),dots=document.getElementById('dots');let current=0;
+slides.forEach((s,i)=>{const b=document.createElement('button');b.className='dot'+(i===0?' active':'');b.title='Ir para: '+s.dataset.title;b.setAttribute('aria-label',b.title);b.addEventListener('click',()=>show(i));dots.appendChild(b)});
+function show(i){current=Math.max(0,Math.min(slides.length-1,i));slides.forEach((s,n)=>s.classList.toggle('active',n===current));[...dots.children].forEach((d,n)=>d.classList.toggle('active',n===current));counter.textContent=`SLIDE ${String(current+1).padStart(2,'0')} / ${String(slides.length).padStart(2,'0')} · ${slides[current].dataset.title.toUpperCase()}`;progress.style.width=((current+1)/slides.length*100)+'%';prev.disabled=current===0;next.textContent=current===slides.length-1?'↻ Reiniciar':'Próximo →';window.scrollTo({top:0,behavior:'smooth'})}
+prev.addEventListener('click',()=>show(current-1));next.addEventListener('click',()=>show(current===slides.length-1?0:current+1));document.addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();show(current===slides.length-1?current:current+1)}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();show(current-1)}});
+</script>
+</body>
+</html>
